@@ -14,6 +14,7 @@
 -define(trace(Str),	syslogger:trace(?MODULE,{{line,?LINE},Str})).
 -define(dbug(Str),	lager:debug("~p",[Str])).
 -define(info(Str),	lager:info("~p",[Str])).
+-define(error(Str),	lager:error("~p",[Str])).
 -define(warn(Str),	lager:warning("~p",[Str])).
 -define(critical(Str),	lager:critical("~p",[Str])).
 -else.
@@ -36,7 +37,7 @@
 
 -define(location,	{location,{module,?MODULE},{line,?LINE}}).
 
--define(error(E),	{error,{?location,{detail,E}}}).
+% -define(error(E),	{error,{?location,{detail,E}}}).
 
 -define(echo(Thread,Message,State),	trace:log(?MODULE,{?MODULE,?LINE},
 				"<<~p>>:message ~p received in state ~p~n",
